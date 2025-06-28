@@ -46,4 +46,18 @@ if __name__ == "__main__":
         print(mask_account_card(data))
 
 
+def get_date(date: str) -> str:
+    """Функция редактирования даты"""
+
+    date_split = date.split('-')
+    date_day = date_split[2][:2]
+    date_mouth = date_split[:2]
+    date_reverse = '.'.join(date_mouth[::-1])
+    new_date = f'{date_day}.{date_reverse}'
+
+    return new_date
+
+
+if __name__ == "__main__":
+    print(get_date("2024-03-11T02:26:18.671407"))
 
