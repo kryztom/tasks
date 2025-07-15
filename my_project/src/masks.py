@@ -12,11 +12,6 @@ def get_mask_card_number(card_number: int) -> str:
     return "Некорректный ввод"
 
 
-# Проверка работы кода
-if __name__ == "__main__":
-    print(get_mask_card_number(1234567890123456))
-
-
 def get_mask_account(account_number: int) -> str:
     """Функция
  принимает на вход номер счета в виде числа и
@@ -32,3 +27,5 @@ def get_mask_account(account_number: int) -> str:
 # Проверка работы кода
 if __name__ == "__main__":
     print(get_mask_account(90123456))
+
+    print(get_mask_card_number(1234567890123456))
