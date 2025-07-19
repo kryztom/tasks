@@ -7,12 +7,12 @@ def get_mask_card_number(card_number: int) -> str:
     if len(card_number) < 16 or len(card_number) > 16:
         raise ValueError('Неверный номер карты')
 
-    if len(card_number) == 16:
-        mask_number = f'{card_number[:4]} {card_number[4:6]} ** **** {card_number[12:]}'
+    elif len(card_number) == 16:
+        mask_number = f'{card_number[:4]} {card_number[4:6]}** **** {card_number[12:]}'
 
         return mask_number
 
-    return "Некорректный ввод"
+
 
 
 def get_mask_account(account_number: int) -> str:
@@ -21,13 +21,12 @@ def get_mask_account(account_number: int) -> str:
  возвращает маску номера по правилу **XXXX
 ."""
     account_number = str(account_number)
-    if len(account_number) < 4 or len(account_number) > 16:
+    if len(account_number) < 4 or len(account_number) > 20:
         raise ValueError('Неверный номер карты')
 
     if len(account_number) >= 4:
         mask_account = f'**{account_number[-4:]}'
         return mask_account
-    return "Некорректный ввод"
 
 
 # Проверка работы кода

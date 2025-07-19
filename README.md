@@ -4,6 +4,10 @@
 
 создаем учебный проект по заданиям на языке Python для банковских продуктов
 
+## Описание
+
+Создаем папку тест где тестируем все функции для банковского проета .
+
 ### Установка
 
 		1. Убедись, что у тебя установлен Python версии >=3.13.
@@ -19,6 +23,18 @@ git clone https://github.com/username/repository.git
 
 '''
 pip install -r requirements.txt
+'''
+
+        4. Установка pytest
+
+'''
+poetry add --group dev pytest
+'''
+
+        5. Установка Code coverage
+
+'''
+poetry add --group dev pytest-cov
 '''
 
 ## Использование
@@ -47,3 +63,4 @@ flake8 = "^7.3.0"
 black = "^25.1.0"
 isort = "^6.0.1"
 mypy = "^1.16.1"
+pytest = ">=6.2.5"

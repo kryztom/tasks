@@ -3,7 +3,7 @@ name = "pythonproject-task"
 version = "0.1.0"
 description = ""
 authors = [
-    { name = "Your Name", email = "you@example.com" }
+    {name = "Kryztom",email = "kryztom@bk.ru"}
 ]
 readme = "README.md"
 requires-python = ">=3.13"
@@ -54,3 +54,6 @@ warn_no_return = true
 disallow_untyped_defs = true
 mypy_path = "src, tests" # Добавьте пути к вашим исходникам и тестам
 exclude = '''(/.venv)'''
+
+[pytest]
+pythonpath = [".", "src"]
