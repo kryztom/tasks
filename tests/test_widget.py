@@ -1,6 +1,6 @@
 import pytest
 
-from src.masks import mask_account_card
+from src.widget import mask_account_card
 
 
 @pytest.mark.parametrize('account_card , expected',[
