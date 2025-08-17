@@ -1,4 +1,4 @@
-from masks import get_mask_account, get_mask_card_number
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(account_card: str) -> str:
@@ -6,6 +6,9 @@ def mask_account_card(account_card: str) -> str:
     так и о счетах"""
     account_card_list = []
     account_card_split = account_card.split()
+
+    if len(account_card) < 10 or len(account_card) > 30:
+        raise ValueError("Неверный номер ")
 
     for word in account_card_split:
         if word.isalpha():
@@ -49,6 +52,8 @@ if __name__ == "__main__":
 def get_date(date: str) -> str:
     """Функция редактирования даты"""
 
+    if not date or len(date) < 10 or len(date) >30:
+        raise ValueError("Неверный формат ")
     date_split = date.split("-")
     date_day = date_split[2][:2]
     date_mouth = date_split[:2]

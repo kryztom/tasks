@@ -1,6 +1,6 @@
 import pytest
 
-from src.masks import get_mask_card_number, get_mask_account
+from src.masks import get_mask_account, get_mask_card_number
 
 """Делаем проверку функции get_mask_card_number """
 
@@ -15,7 +15,7 @@ def test_get_mask_card_number(card_number, expected):
 """Проверка если номер карты меньше 16 цифр"""
 
 
-def test_get_mask_card_number_litle():
+def test_get_mask_card_number_little():
     with pytest.raises(ValueError):
         get_mask_card_number("1263689669")
 
