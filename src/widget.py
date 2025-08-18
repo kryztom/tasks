@@ -1,4 +1,4 @@
-from masks import get_mask_account, get_mask_card_number
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(account_card: str) -> str:
@@ -7,18 +7,21 @@ def mask_account_card(account_card: str) -> str:
     account_card_list = []
     account_card_split = account_card.split()
 
+    if len(account_card) < 10 or len(account_card) > 30:
+        raise ValueError("Неверный номер ")
+
     for word in account_card_split:
         if word.isalpha():
             account_card_list.append(word)
     card_type = "".join(account_card_list)
 
-    number_card = account_card_split[-1]
+    card_number = account_card_split[-1]
     if account_card_split[0].lower() == "счет":
 
-        return f"{card_type} {get_mask_account(number_card)}"
+        return f"{card_type} {get_mask_account(card_number)}"
     else:
 
-        return f"{card_type} {get_mask_card_number(number_card)}"
+        return f"{card_type} {get_mask_card_number(card_number)}"
 
 
 # Примеры входных данных для проверки функции
@@ -49,6 +52,8 @@ if __name__ == "__main__":
 def get_date(date: str) -> str:
     """Функция редактирования даты"""
 
+    if not date or len(date) < 10 or len(date) > 30:
+        raise ValueError("Неверный формат ")
     date_split = date.split("-")
     date_day = date_split[2][:2]
     date_mouth = date_split[:2]
