@@ -52,7 +52,7 @@ if __name__ == "__main__":
 def get_date(date: str) -> str:
     """Функция редактирования даты"""
 
-    if not date or len(date) < 10 or len(date) >30:
+    if not date or len(date) < 10 or len(date) > 30:
         raise ValueError("Неверный формат ")
     date_split = date.split("-")
     date_day = date_split[2][:2]

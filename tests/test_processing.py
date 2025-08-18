@@ -29,24 +29,33 @@ from src.processing import filter_by_state, sort_by_date
             ]
     )
 ])
-def test_filter_by_state(list_of_dict, state, expected):
+def test_filter_by_state(list_of_dict: list, state: str, expected: list) -> None:
     assert filter_by_state(list_of_dict, state) == expected
+
+
 """Проверка если список будет пуст """
 
-def test_filter_by_empty():
+
+def test_filter_by_empty() -> None:
     with pytest.raises(ValueError):
         filter_by_state([])
 
+
 """Проверка если state пуст"""
-def test_filter_by_state_empty():
+
+
+def test_filter_by_state_empty() -> None:
     with pytest.raises(ValueError):
-        filter_by_state("65830300398", " ")
+        filter_by_state(["65830300398"], " ")
+
 
 """Проверка если state = CANCE"""
 
-def test_filter_by_state_not_correct():
+
+def test_filter_by_state_not_correct() -> None:
     with pytest.raises(ValueError):
-        filter_by_state("3693469396", "CANCE")
+        filter_by_state(["3693469396"], "CANCE")
+
 
 """Проверка функции sort_by_date"""
 
@@ -68,31 +77,38 @@ def test_filter_by_state_not_correct():
             ]
     )
 ])
-def test_sort_by_date(data_list, descending, expected):
+def test_sort_by_date(data_list: list, descending: bool, expected: list) -> None:
     assert sort_by_date(data_list, descending) == expected
+
 
 """Тестирование сортировки списка словарей по датам в порядке возрастания"""
 
-def test_sort_by_date_false():
+
+def test_sort_by_date_false() -> None:
     with pytest.raises(ValueError):
-        sort_by_date({'id': 41428827, 'state': 'EXECUTED', 'date': '2016-07-03T18:35:29.512364'}, False)
+        sort_by_date({'id': 41428827, 'state': 'EXECUTED', 'date': '2016-07-03T18:35:29.512364'},
+                     False)
+
 
 """Проверка корректности сортировки при одинаковых датах."""
 
-def test_sort_by_date_date():
+
+def test_sort_by_date_date() -> None:
     with pytest.raises(ValueError):
         sort_by_date([
-                {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
-                {'id': 615064591, 'state': 'CANCELED', 'date': '2019-07-03T18:35:29.512364'},
-                {"id": 594226727, "state": "CANCELED", "date": "2019-07-03T18:35:29.512364"},
-                {"id": 939719570, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"}
-            ], True)
+            {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
+            {'id': 615064591, 'state': 'CANCELED', 'date': '2019-07-03T18:35:29.512364'},
+            {"id": 594226727, "state": "CANCELED", "date": "2019-07-03T18:35:29.512364"},
+            {"id": 939719570, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"}
+        ], True)
+
 
 """Тесты на работу функции с некорректными или нестандартными форматами дат"""
 
-def test_sort_by_date_date():
+
+def test_sort_by_date_little() -> None:
     with pytest.raises(ValueError):
         sort_by_date([
-                {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07'},
-                {'id': 615064591, 'state': 'CANCELED', 'date': '2019-07-03'},
-            ], True)
+            {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07'},
+            {'id': 615064591, 'state': 'CANCELED', 'date': '2019-07-03'},
+        ], True)

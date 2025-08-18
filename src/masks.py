@@ -1,4 +1,4 @@
-def get_mask_card_number(card_number: int) -> str:
+def get_mask_card_number(card_number: str) -> str:
     """Функция принимает на вход номер карты в виде
          числа и возвращает маску номера по правилу
          XXXX XX** **** XXXX
@@ -13,7 +13,7 @@ def get_mask_card_number(card_number: int) -> str:
         return mask_number
 
 
-def get_mask_account(account_number: int) -> str:
+def get_mask_account(account_number: str) -> str:
     """Функция
      принимает на вход номер счета в виде числа и
      возвращает маску номера по правилу **XXXX
@@ -29,6 +29,6 @@ def get_mask_account(account_number: int) -> str:
 
 # Проверка работы кода
 if __name__ == "__main__":
-    print(get_mask_account(90123456))
+    print(get_mask_account("90123456"))
 
-    print(get_mask_card_number(1234567890123456))
+    print(get_mask_card_number("1234567890123456"))
