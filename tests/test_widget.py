@@ -2,6 +2,8 @@ import pytest
 
 from src.widget import mask_account_card, get_date
 
+"""Делаем проверку функции mask_account_card """
+
 
 @pytest.mark.parametrize('account_card , expected', [
     ("Maestro 1596837868705199", "Maestro 1596 83** **** 5199"),
@@ -16,9 +18,15 @@ def test_mask_account_card(account_card, expected):
     assert mask_account_card(account_card) == expected
 
 
+"""Проверка если номер  больше 30 цифр"""
+
+
 def test_mask_account_card_big():
     with pytest.raises(ValueError):
         mask_account_card("126368966922533535353523232335")
+
+
+"""Проверка если номер пустой"""
 
 
 def test_mask_account_card_empty():
@@ -26,9 +34,15 @@ def test_mask_account_card_empty():
         mask_account_card(" ")
 
 
+"""Проверка если номер меньше 16 цифр"""
+
+
 def test_mask_account_card_little():
     with pytest.raises(ValueError):
         mask_account_card("126")
+
+
+"""Делаем проверку функции get_date """
 
 
 @pytest.mark.parametrize('date, expected',
@@ -36,17 +50,26 @@ def test_mask_account_card_little():
 def test_get_date(date, expected):
     assert get_date(date) == expected
 
+
+"""Проверяем если дата пустая"""
+
+
 def test_get_date_empty():
     with pytest.raises(ValueError):
         get_date("")
+
+
+"""Проверяем если дата меньше 10 цифр"""
 
 
 def test_get_date_little():
     with pytest.raises(ValueError):
         get_date("3789-29")
 
+
+"""Проверяем если дата больше 30 цифр """
+
+
 def test_get_date_big():
     with pytest.raises(ValueError):
         get_date("2952598-25295809ujf220-f24844482883345353535")
-
-

@@ -6,6 +6,12 @@ def filter_by_state(list_of_dict: list, state: list = "EXECUTED") -> list:
     state
      соответствует указанному значению"""
     filtered_list = []
+    if not list_of_dict:
+        raise ValueError("Список не должен быть пустым")
+    if not state.strip():
+        raise ValueError("Параметр state не должен быть пустым")
+    if state == "CANCE":
+        raise ValueError("Параметры не верны")
     for dict_item in list_of_dict:
         if dict_item.get("state") == state:
             filtered_list.append(dict_item)
@@ -13,10 +19,18 @@ def filter_by_state(list_of_dict: list, state: list = "EXECUTED") -> list:
     return filtered_list
 
 
-def sort_by_date(data_list: list, descending: list = True) -> list:
+def sort_by_date(data_list: list, descending: bool = True) -> list:
     """Функция, которая принимает список словарей и необязательный параметр,
     задающий порядок сортировки (по умолчанию — убывание). Функция должна возвращать
      новый список, отсортированный по дате (date)."""
+    if descending == False:
+        raise ValueError("Неправильная сортировка")
+    for i in range(len(data_list)):
+        for j in range(i + 1, len(data_list)):
+            if data_list[i]['date'] == data_list[j]['date']:
+                raise ValueError("Даты одинаковые")
+            if len(data_list[i]['date']) < 12:
+                raise ValueError("Некорректная дата")
     return sorted(data_list, key=lambda x: x["date"], reverse=descending)
 
     # Проверка работы кода
