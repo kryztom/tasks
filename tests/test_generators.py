@@ -1,6 +1,6 @@
 import pytest
 
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 @pytest.mark.usefixtures("sample_transactions")
@@ -109,21 +109,21 @@ def test_transaction_descriptions(sample_transactions):
 # Параметризация для генератора номеров карт
 @pytest.mark.parametrize("start, end, expected_numbers", [
     (
-        1,
-        3,
-        [
-            "0000 0000 0000 0001",
-            "0000 0000 0000 0002",
-            "0000 0000 0000 0003"
-        ]
+            1,
+            3,
+            [
+                "0000 0000 0000 0001",
+                "0000 0000 0000 0002",
+                "0000 0000 0000 0003"
+            ]
     ),
     (
-        9999999999999998,
-        9999999999999999,
-        [
-            "9999 9999 9999 9998",
-            "9999 9999 9999 9999"
-        ]
+            9999999999999998,
+            9999999999999999,
+            [
+                "9999 9999 9999 9998",
+                "9999 9999 9999 9999"
+            ]
     )
 ])
 def test_card_number_generator(start, end, expected_numbers):
