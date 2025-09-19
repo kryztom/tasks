@@ -1,4 +1,4 @@
-from masks import get_mask_account, get_mask_card_number
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(account_card: str) -> str:
@@ -12,13 +12,13 @@ def mask_account_card(account_card: str) -> str:
             account_card_list.append(word)
     card_type = "".join(account_card_list)
 
-    number_card = account_card_split[-1]
+    card_number = account_card_split[-1]
     if account_card_split[0].lower() == "счет":
 
-        return f"{card_type} {get_mask_account(number_card)}"
+        return f"{card_type} {get_mask_account(card_number)}"
     else:
 
-        return f"{card_type} {get_mask_card_number(number_card)}"
+        return f"{card_type} {get_mask_card_number(card_number)}"
 
 
 # Примеры входных данных для проверки функции
